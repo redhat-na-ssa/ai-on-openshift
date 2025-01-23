@@ -11,7 +11,9 @@ edit_uri: ''  #disables edit button
 
 ## Plugins
 plugins:
-  - social
+  - social:
+      cards_layout_options:
+        font_family: Roboto
   - search
 
 ## Theme
@@ -44,6 +46,8 @@ theme:
       - navigation.indexes
       - navigation.top
       - navigation.tabs
+      - navigation.tabs.sticky
+      - navigation.expand
 
 ## Social
 extra:
@@ -79,6 +83,7 @@ markdown_extensions:
   - pymdownx.snippets
   - attr_list
   - md_in_html
+  - footnotes
   - codehilite:
       use_pygments: False
   - pymdownx.superfences:
@@ -90,38 +95,75 @@ markdown_extensions:
 ## Site layout
 nav:
   - Home: index.md
-  - What's new?: whats-new/whats-new.md
-  - Getting Started:
-    - Why this site?: getting-started/why-this-site.md
-    - OpenShift and AI: getting-started/openshift.md
-    - Open Data Hub: getting-started/opendatahub.md
-    - OpenShift Data Science: getting-started/openshift-data-science.md
-  - ODH/RHODS How-Tos:
-    - Dashboard configuration: odh-rhods/configuration.md
-    - Custom notebooks: odh-rhods/custom-notebooks.md
-    - NVIDIA GPUs: odh-rhods/nvidia-gpus.md
-    - Custom Serving Runtime (Triton): odh-rhods/custom-runtime-triton.md
-    - OpenShift Group Management: odh-rhods/openshift-group-management.md
-  - Tools and Applications:
-    - Apache Airflow: tools-and-applications/airflow/airflow.md
-    - Apache Spark: tools-and-applications/apache-spark/apache-spark.md
-    - Apache NiFi: tools-and-applications/apache-nifi/apache-nifi.md
-    - MLflow: tools-and-applications/mlflow/mlflow.md
-    - NVIDIA Riva: tools-and-applications/riva/riva.md
-    - Rclone: tools-and-applications/rclone/rclone.md
-    - Minio: tools-and-applications/minio/minio.md
-  - Patterns:
-    - Bucket notifications: patterns/bucket-notifications/bucket-notifications.md
-    - Kafka to object storage: patterns/kafka/kafka-to-object-storage/kafka-to-object-storage.md
-    - Kafka to serverless: patterns/kafka/kafka-to-serverless/kafka-to-serverless.md
-    - Starburst/Trino proxy: patterns/starproxy/starproxy.md
-  - Demos:
-    - Credit Card Fraud Detection with MLFlow: demos/credit-card-fraud-detection-mlflow/credit-card-fraud.md
-    - Financial Fraud Detection: demos/financial-fraud-detection/financial-fraud-detection.md
-    - Object Detection in Retail: demos/retail-object-detection/retail-object-detection.md
-    - Robotics at the Edge: demos/robotics-edge/robotics-edge.md
-    - Smart City: demos/smart-city/smart-city.md
-    - Telecom Customer Churn with Airflow: demos/telecom-customer-churn-airflow/telecom-customer-churn-airflow.md
-    - Water Pump Failure Prediction: demos/water-pump-failure-prediction/water-pump-failure-prediction.md
-    - XRay Pipeline: demos/xray-pipeline/xray-pipeline.md
-    - YOLOv5 Training and Serving: demos/yolov5-training-serving/yolov5-training-serving.md
+  - Overview:
+    - What's new?:
+      - Latest updates: whats-new/whats-new.md
+    - Getting Started:
+      - Why this site?: getting-started/why-this-site.md
+      - OpenShift and AI: getting-started/openshift.md
+      - Open Data Hub: getting-started/opendatahub.md
+      - OpenShift AI: getting-started/openshift-ai.md
+  - ODH/RHOAI How-Tos:
+    - From Zero to Workbench:
+      - Using the CLI: odh-rhoai/from-zero-to-workbench/using-cli.md
+      - Using the UI: odh-rhoai/from-zero-to-workbench/using-ui.md
+      - Using Developer Hub: odh-rhoai/from-zero-to-workbench/using-developer-hub.md
+    - Advanced Configuration:
+      - Accelerator Profiles: odh-rhoai/accelerator-profiles.md
+      - Custom notebooks: odh-rhoai/custom-notebooks.md
+      - Custom Serving Runtime (Triton): odh-rhoai/custom-runtime-triton.md
+      - Dashboard configuration: odh-rhoai/configuration.md
+      - GitOps (CRs, objects,...): odh-rhoai/gitops.md
+      - Kueue preemption: odh-rhoai/kueue-preemption/readme.md
+      - Model serving type modification: odh-rhoai/model-serving-type-modification.md
+      - NVIDIA GPUs: odh-rhoai/nvidia-gpus.md
+      - OpenShift Group Management: odh-rhoai/openshift-group-management.md
+      - Single stack serving certificate: odh-rhoai/single-stack-serving-certificate.md
+      - KServe Timeout Issues: odh-rhoai/kserve-timeout.md
+      - RHOAI Metrics Dashboard for Model Serving: odh-rhoai/kserve-uwm-dashboard-metrics.md
+      - Connect to RHOAI Workbench Kernel from VS Code: odh-rhoai/connect-vscode-to-rhoai-wb.md
+      - AnythingLLM as Custom Workbench: odh-rhoai/custom-workbench-anythingllm.md
+    - Tools:
+      - GPU pruner: odh-rhoai/gpu-pruner.md
+      - ODH Tools and Extensions Companion: odh-rhoai/odh-tools-and-extensions-companion.md
+      - Using Kubernetes Image Puller Operator to Speed Up Start-Up Times: odh-rhoai/image-puller.md
+      - Function / Tool Calling: odh-rhoai/enable-function-calling.md
+  - Applications and Patterns:
+    - Model Serving:
+      - Ensemble Serving: tools-and-applications/ensemble-serving/ensemble-serving.md
+    - Data processing:
+      - Apache NiFi: tools-and-applications/apache-nifi/apache-nifi.md
+      - Apache Spark: tools-and-applications/apache-spark/apache-spark.md
+      - NVIDIA Riva: tools-and-applications/riva/riva.md
+      - Starburst/Trino proxy: patterns/starproxy/starproxy.md
+    - Workflows:
+      - Apache Airflow: tools-and-applications/airflow/airflow.md
+      - MLflow: tools-and-applications/mlflow/mlflow.md
+      - Data Science Pipeline: tools-and-applications/datasciencepipeline/datasciencepipeline.md
+    - Storage:
+      - Minio: tools-and-applications/minio/minio.md
+      - Rclone: tools-and-applications/rclone/rclone.md
+    - Architecture Patterns:
+      - Bucket notifications: patterns/bucket-notifications/bucket-notifications.md
+      - Kafka to object storage: patterns/kafka/kafka-to-object-storage/kafka-to-object-storage.md
+      - Kafka to serverless: patterns/kafka/kafka-to-serverless/kafka-to-serverless.md
+  - Predictive AI:
+    - What is Predictive AI?: predictive-ai/what-is-predictive-ai.md
+    - Demos:
+      - Credit Card Fraud Detection with MLFlow: demos/credit-card-fraud-detection-mlflow/credit-card-fraud.md
+      - Financial Fraud Detection: demos/financial-fraud-detection/financial-fraud-detection.md
+      - Object Detection in Retail: demos/retail-object-detection/retail-object-detection.md
+      - Smart City: demos/smart-city/smart-city.md
+      - Telecom Customer Churn with Airflow: demos/telecom-customer-churn-airflow/telecom-customer-churn-airflow.md
+      - Water Pump Failure Prediction: demos/water-pump-failure-prediction/water-pump-failure-prediction.md
+      - XRay Pipeline: demos/xray-pipeline/xray-pipeline.md
+      - YOLOv5 Training and Serving: demos/yolov5-training-serving/yolov5-training-serving.md
+  - Generative AI:
+    - What is Generative AI?: generative-ai/what-is-generative-ai.md
+    - LLM Serving: generative-ai/llm-serving.md
+    - Demos: 
+      - Chat with your documentation: demos/llm-chat-doc/llm-chat-doc.md
+      - Code assistant: demos/codellama-continue/codellama-continue.md
+      - Fine-tune Llama2: demos/llama2-finetune/llama2-finetune.md
+      - From Podman AI Lab to OpenShift AI: demos/podman-ai-lab-to-rhoai/podman-ai-lab-to-rhoai.md
+      - Text to Image: demos/stable-diffusion/stable-diffusion.md
